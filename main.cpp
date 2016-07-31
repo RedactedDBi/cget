@@ -1,13 +1,16 @@
 #include <string>
 #include <iostream>
+#include <unordered_map>
 #include <inputparser.h>
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::unordered_map;
+using std::string;
 
 namespace {
-    const std::string USAGE =
+    const string USAGE =
             "\n"
             "Usage: cget <command> [flags] [argsFullFlag...]\n"
             "\n"
@@ -25,6 +28,22 @@ namespace {
 }
 
 int main(int argc, char* argv[]) {
-    cout << USAGE;
+    cget::InputParser::ShortFlags flags;
+    cget::InputParser parser(flags);
+    cget::InputParser::Args args;
+    cget::InputParser::Result result;
+
+    for (int i = 1; i < argc; ++i) {
+        args.push_back(std::string(argv[i]));
+    }
+
+    try {
+        parser.parse(args, &result);
+    } catch(std::invalid_argument) {
+        // Just show the usage if we failed parsing
+        cout << USAGE;
+        return 1;
+    }
+
     return 0;
 }
