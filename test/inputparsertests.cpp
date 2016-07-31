@@ -36,3 +36,13 @@ TEST_F(InputParserTest, ParsesShorthandBinaryFlagCorrectly) {
     ASSERT_EQ(result.binaryFlags.size(), 1);
     ASSERT_TRUE(result.binaryFlags.find("save") != result.binaryFlags.end());
 }
+
+TEST_F(InputParserTest, OnlyFlagsThrowsException) {
+    Result result;
+    ASSERT_THROW(sut.parse({ "--flag" }, &result), std::invalid_argument);
+}
+
+TEST_F(InputParserTest, EmptyArgsThrowsException) {
+    Result result;
+    ASSERT_THROW(sut.parse({}, &result), std::invalid_argument);
+}
