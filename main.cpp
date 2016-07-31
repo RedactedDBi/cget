@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <inputparser.h>
 
 using std::cout;
 using std::cin;

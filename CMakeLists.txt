@@ -5,12 +5,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 # Main library for cget
 include_directories(${CMAKE_SOURCE_DIR}/include/)
-set(SOURCE_FILES src/temp.cpp)
+set(SOURCE_FILES src/inputparser.cpp)
 add_library(cget-core STATIC ${SOURCE_FILES})
 
 # The main executable will only contain the main.cpp, and will
 # statically link to the main library
 add_executable(cget main.cpp)
+target_link_libraries(cget cget-core)
 
 # Add test project
 add_subdirectory(${CMAKE_SOURCE_DIR}/test)
