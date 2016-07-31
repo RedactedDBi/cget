@@ -46,3 +46,10 @@ TEST_F(InputParserTest, EmptyArgsThrowsException) {
     Result result;
     ASSERT_THROW(sut.parse({}, &result), std::invalid_argument);
 }
+
+TEST_F(InputParserTest, ArgumentsParsedCorrectly) {
+    Result result;
+    sut.parse(argsFullFlag, &result);
+    ASSERT_EQ(result.args.size(), 1);
+    ASSERT_EQ(result.args[0], "lib/dep");
+}

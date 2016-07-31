@@ -10,8 +10,10 @@ namespace cget {
         struct Result {
             std::string command;
             std::unordered_set<std::string> binaryFlags;
+            std::vector<std::string> args;
         };
 
+        // Convenience typedefs
         using Args = std::vector<std::string>;
         using ShortFlags = std::unordered_map<std::string, std::string>;
 

@@ -38,5 +38,9 @@ void cget::InputParser::parse(const Args& args, Result* result) const {
             auto match = matches[1].str();
             result->binaryFlags.insert(_shortFlags.at(match));
         }
+        else {
+            // Should be safe to assume this is an argument here
+            result->args.push_back(args[i]);
+        }
     }
 }
