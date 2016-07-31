@@ -9,7 +9,7 @@ using std::endl;
 namespace {
     const std::string USAGE =
             "\n"
-            "Usage: cget <command> [flags] [args...]\n"
+            "Usage: cget <command> [flags] [argsFullFlag...]\n"
             "\n"
             "The most commonly used cget commands are:\n"
             "   install      Install a dependency\n"
