@@ -22,12 +22,7 @@ namespace {
 cget::InputParser::InputParser(const ShortFlags& shortFlags)
         : _shortFlags(shortFlags) {}
 
-void cget::InputParser::parse(const Args& args, Result* result) const {
-    assertSubCommand(args);
-    result->command = args[0];
-
-    // iterate through the rest of the items and parse them as either
-    // flags or arguments
+void cget::InputParser::parseFlags(const Args& args, Result* result) const {
     for (int i = 1; i < args.size(); ++i) {
         std::smatch matches;
 
@@ -43,4 +38,15 @@ void cget::InputParser::parse(const Args& args, Result* result) const {
             result->args.push_back(args[i]);
         }
     }
+}
+
+std::string cget::InputParser::parseSubCommand(const Args& args, Args* output) {
+    assertSubCommand(args);
+    for (int i = 0; i < args.size(); ++i) {
+        if (i > 0) {
+            output->push_back(args[i]);
+        }
+    }
+
+    return args[0];
 }

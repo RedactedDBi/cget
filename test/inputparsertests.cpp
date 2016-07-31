@@ -18,38 +18,41 @@ struct InputParserTest : testing::Test {
 };
 
 TEST_F(InputParserTest, ParsesMainCommandCorrectly) {
-    Result result;
-    sut.parse(argsFullFlag, &result);
-    ASSERT_EQ("install", result.command);
+    cget::InputParser::Args output;
+    auto cmd = sut.parseSubCommand(argsFullFlag, &output);
+    ASSERT_EQ("install", cmd);
+    ASSERT_EQ(output.size(), 2);
+    ASSERT_EQ(output[0], "--save");
+    ASSERT_EQ(output[1], "lib/dep");
 }
 
 TEST_F(InputParserTest, ParsesBinaryFlagsCorrectly) {
     Result result;
-    sut.parse(argsFullFlag, &result);
+    sut.parseFlags(argsFullFlag, &result);
     ASSERT_EQ(result.binaryFlags.size(), 1);
     ASSERT_TRUE(result.binaryFlags.find("save") != result.binaryFlags.end());
 }
 
 TEST_F(InputParserTest, ParsesShorthandBinaryFlagCorrectly) {
     Result result;
-    sut.parse(argsShortFlag, &result);
+    sut.parseFlags(argsShortFlag, &result);
     ASSERT_EQ(result.binaryFlags.size(), 1);
     ASSERT_TRUE(result.binaryFlags.find("save") != result.binaryFlags.end());
 }
 
 TEST_F(InputParserTest, OnlyFlagsThrowsException) {
-    Result result;
-    ASSERT_THROW(sut.parse({ "--flag" }, &result), std::invalid_argument);
+    cget::InputParser::Args output;
+    ASSERT_THROW(sut.parseSubCommand({"--flag"}, &output), std::invalid_argument);
 }
 
 TEST_F(InputParserTest, EmptyArgsThrowsException) {
-    Result result;
-    ASSERT_THROW(sut.parse({}, &result), std::invalid_argument);
+    cget::InputParser::Args output;
+    ASSERT_THROW(sut.parseSubCommand({}, &output), std::invalid_argument);
 }
 
 TEST_F(InputParserTest, ArgumentsParsedCorrectly) {
     Result result;
-    sut.parse(argsFullFlag, &result);
+    sut.parseFlags(argsFullFlag, &result);
     ASSERT_EQ(result.args.size(), 1);
     ASSERT_EQ(result.args[0], "lib/dep");
 }

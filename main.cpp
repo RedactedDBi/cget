@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
-#include <inputparser.h>
+#include <cget.h>
 
 using std::cout;
 using std::cin;
@@ -12,7 +12,7 @@ using std::string;
 namespace {
     const string USAGE =
             "\n"
-            "Usage: cget <command> [flags] [argsFullFlag...]\n"
+            "Usage: cget <command> [flags...] [args...]\n"
             "\n"
             "The most commonly used cget commands are:\n"
             "   install      Install a dependency\n"
@@ -28,17 +28,18 @@ namespace {
 }
 
 int main(int argc, char* argv[]) {
-    cget::InputParser::ShortFlags flags;
-    cget::InputParser parser(flags);
-    cget::InputParser::Args args;
-    cget::InputParser::Result result;
-
+    // Shove incoming args into a vector
+    cget::InputParser::Args initialArgs, subCmdArgs;
     for (int i = 1; i < argc; ++i) {
-        args.push_back(std::string(argv[i]));
+        initialArgs.push_back(std::string(argv[i]));
     }
 
     try {
-        parser.parse(args, &result);
+        // Try to parse the sub command
+        auto subCmd = cget::InputParser::parseSubCommand(initialArgs, &subCmdArgs);
+        cget::CommandFactory cmdFactory;
+        auto cmd = cmdFactory.create(subCmd);
+        cmd->invoke(subCmdArgs);
     } catch(std::invalid_argument) {
         // Just show the usage if we failed parsing
         cout << USAGE;

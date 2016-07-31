@@ -5,7 +5,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 # Main library for cget
 include_directories(${CMAKE_SOURCE_DIR}/include/)
-set(SOURCE_FILES src/inputparser.cpp)
+set(SOURCE_FILES
+        include/cget.h
+        include/inputparser.h src/inputparser.cpp
+        include/commandfactory.h src/commandfactory.cpp
+        include/command/command.h)
+
 add_library(cget-core STATIC ${SOURCE_FILES})
 
 # The main executable will only contain the main.cpp, and will
