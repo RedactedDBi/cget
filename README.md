@@ -5,4 +5,8 @@
         $ cmake ..
         $ make
 
-Your binaries will be in the `build` dir
+Binaries will be found in the `build` directory. In order to install
+`cget` locally (`/usr/local/bin`), run:
+
+        $ make install
+

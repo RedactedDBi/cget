@@ -14,3 +14,6 @@ add_executable(cget main.cpp)
 
 # Add test project
 add_subdirectory(${CMAKE_SOURCE_DIR}/test)
+
+# Generate installation rules
+install(TARGETS cget RUNTIME DESTINATION bin)
