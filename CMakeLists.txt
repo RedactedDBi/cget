@@ -9,7 +9,8 @@ set(SOURCE_FILES
         include/cget.h
         include/inputparser.h src/inputparser.cpp
         include/commandfactory.h src/commandfactory.cpp
-        include/command/command.h)
+        include/command/command.h src/command/command.cpp
+        include/command/install.h src/command/install.cpp)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 
