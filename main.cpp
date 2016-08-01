@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
         auto subCmd = cget::InputParser::parseSubCommand(initialArgs, &subCmdArgs);
         cget::CommandFactory cmdFactory;
         auto cmd = cmdFactory.create(subCmd);
-        return cmd ? 1 : cmd->invoke(subCmdArgs);
+        return cmd ? cmd->invoke(subCmdArgs) : 1;
     } catch(std::invalid_argument) {
         // Just show the usage if we failed parsing
         cout << USAGE;
