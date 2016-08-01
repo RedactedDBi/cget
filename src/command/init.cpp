@@ -2,16 +2,19 @@
 #include <iostream>
 #include <json.hpp>
 #include <regex>
+#include <fstream>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::ofstream;
 using json = nlohmann::json;
 
 namespace {
     const int JSON_SPACING = 4;
     const std::string DEFAULT_VERSION = "1.0.0";
+    const std::string PACKAGE_JSON_FILE = "package.json";
     const std::regex VERSION_REGEX("^(\\d+\\.\\d+\\.\\d+)$");
 
     struct Package {
@@ -83,6 +86,13 @@ namespace {
         return lower.length() == 0 ||
                lower == "y" || lower == "yes";
     }
+
+    void writePackageFile(const std::string& json) {
+        ofstream packageFile;
+        packageFile.open (PACKAGE_JSON_FILE);
+        packageFile << json << endl;
+        packageFile.close();
+    }
 }
 
 cget::Init::Init(const std::string &_name)
@@ -103,7 +113,8 @@ int cget::Init::invoke(const std::vector<std::string> &args) {
 
     cout << "About to write the following to package.json:" << endl;
     cout << endl;
-    cout << constructJSON(p) << endl;
+    string packageJson = constructJSON(p);
+    cout << packageJson << endl;
     cout << endl;
     cout << "Is this ok? (yes) ";
 
@@ -112,6 +123,7 @@ int cget::Init::invoke(const std::vector<std::string> &args) {
 
     if (affirmative(answer)) {
         cout << "Writing package.json" << endl;
+        writePackageFile(packageJson);
     }
 
     return 0;
