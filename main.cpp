@@ -15,7 +15,7 @@ namespace {
             "Usage: cget <command> [flags...] [args...]\n"
             "\n"
             "The most commonly used cget commands are:\n"
-            "   init         Initialize a new module, and create a package.json\n"
+            "   init         Initialize a new module, and create a cget.json\n"
             "   install      Install a dependency\n"
             "   uninstall    Uninstall a dependency\n"
             "   update       Recursively check dependencies for newer versions\n"

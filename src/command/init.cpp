@@ -14,7 +14,7 @@ using json = nlohmann::json;
 namespace {
     const int JSON_SPACING = 4;
     const std::string DEFAULT_VERSION = "1.0.0";
-    const std::string PACKAGE_JSON_FILE = "package.json";
+    const std::string JSON_FILE = "cget.json";
     const std::regex VERSION_REGEX("^(\\d+\\.\\d+\\.\\d+)$");
 
     struct Package {
@@ -64,7 +64,7 @@ namespace {
         } while(p->version.length() == 0);
     }
 
-    // Parse all parameters for package.json
+    // Parse all parameters for the package file
     void parsePackageParams(Package* p) {
         // Name and version are a bit involved, so extracted in order to de-clutter:
         parseName(p);
@@ -89,7 +89,7 @@ namespace {
 
     void writePackageFile(const std::string& json) {
         ofstream packageFile;
-        packageFile.open (PACKAGE_JSON_FILE);
+        packageFile.open (JSON_FILE);
         packageFile << json << endl;
         packageFile.close();
     }
@@ -99,11 +99,11 @@ cget::Init::Init(const std::string &_name)
         : Command(_name) {}
 
 int cget::Init::invoke(const std::vector<std::string> &args) {
-    cout << "This utility will walk you through creating a package.json file." << endl;
+    cout << "This utility will walk you through creating a " << JSON_FILE << " file." << endl;
     cout << "You'll be asked to setup the most common items" << endl;
     cout << endl;
     cout << "Use `cget install --save <dependency>` afterwards to install a dependency" << endl;
-    cout << "and save it to your package.json file." << endl;
+    cout << "and save it to your " << JSON_FILE << " file." << endl;
     cout << endl;
     cout << "Press ^C at any time to quit." << endl;
     cout << endl;
@@ -111,7 +111,7 @@ int cget::Init::invoke(const std::vector<std::string> &args) {
     Package p;
     parsePackageParams(&p);
 
-    cout << "About to write the following to package.json:" << endl;
+    cout << "About to write the following to " << JSON_FILE << ":" << endl;
     cout << endl;
     string packageJson = constructJSON(p);
     cout << packageJson << endl;
@@ -122,7 +122,7 @@ int cget::Init::invoke(const std::vector<std::string> &args) {
     std::getline(cin, answer);
 
     if (affirmative(answer)) {
-        cout << "Writing package.json" << endl;
+        cout << "Writing " << JSON_FILE << endl;
         writePackageFile(packageJson);
     }
 
