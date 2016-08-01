@@ -4,6 +4,7 @@
 
 // Sub commands
 #include <command/install.h>
+#include <command/init.h>
 
 using std::string;
 using std::vector;
@@ -17,7 +18,8 @@ namespace {
     }
 
     std::unordered_map<std::string, RegFunc> typeMap = {
-            { "install", &instantiate<cget::Install> }
+            { "install", &instantiate<cget::Install> },
+            { "init", &instantiate<cget::Init> },
     };
 }
 

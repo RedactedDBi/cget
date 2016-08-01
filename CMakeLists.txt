@@ -24,7 +24,7 @@ set(SOURCE_FILES
         include/inputparser.h src/inputparser.cpp
         include/commandfactory.h src/commandfactory.cpp
         include/command/command.h src/command/command.cpp
-        include/command/install.h src/command/install.cpp)
+        include/command/install.h src/command/install.cpp src/command/init.cpp include/command/init.h)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 
@@ -32,6 +32,11 @@ add_library(cget-core STATIC ${SOURCE_FILES})
 # statically link to the main library
 add_executable(cget main.cpp)
 target_link_libraries(cget cget-core)
+
+# External libraries
+add_subdirectory(${CMAKE_SOURCE_DIR}/lib/json-develop)
+include_directories(${CMAKE_SOURCE_DIR}/lib/json-develop/src)
+target_link_libraries(cget nlohmann_json)
 
 # Add test project
 add_subdirectory(${CMAKE_SOURCE_DIR}/test)
