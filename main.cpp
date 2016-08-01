@@ -31,7 +31,16 @@ int main(int argc, char* argv[]) {
     // Shove incoming args into a vector
     cget::InputParser::Args initialArgs, subCmdArgs;
     for (int i = 1; i < argc; ++i) {
-        initialArgs.push_back(std::string(argv[i]));
+        std::string arg(argv[i]);
+
+        // Special case: If we encounter a version flag,
+        // we'll just print the version and bail out
+        if (arg == "--version" || arg == "-v") {
+            std::cout << cget::CGET_VERSION << std::endl;
+            return 0;
+        }
+
+        initialArgs.push_back(arg);
     }
 
     try {

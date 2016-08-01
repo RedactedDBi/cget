@@ -1,5 +1,6 @@
 #pragma once
 
-#include "inputparser.h"
-#include "commandfactory.h"
-#include "command/command.h"
+#include <VERSION.h>
+#include <inputparser.h>
+#include <commandfactory.h>
+#include <command/command.h>

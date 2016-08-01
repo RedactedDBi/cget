@@ -1,7 +1,21 @@
 cmake_minimum_required(VERSION 3.3)
+
 project(cget)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+# This will do for now, but we could probably set up some nice parsing
+# with git-describe or similar further down the road
+set(cget_MAJOR 0)
+set(cget_MINOR 0)
+set(cget_PATCH 1)
+
+configure_file (
+        "${PROJECT_SOURCE_DIR}/VERSION.h.in"
+        "${PROJECT_BINARY_DIR}/VERSION.h"
+)
+
+include_directories("${PROJECT_BINARY_DIR}")
 
 # Main library for cget
 include_directories(${CMAKE_SOURCE_DIR}/include/)

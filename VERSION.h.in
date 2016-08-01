@@ -1,0 +1,5 @@
+// NOTE: This is auto-generated during build. Changes will be overwritten
+#include <string>
+namespace cget {
+    const std::string CGET_VERSION = "@cget_MAJOR@.@cget_MINOR@.@cget_PATCH@";
+}
