@@ -21,11 +21,14 @@ include_directories("${PROJECT_BINARY_DIR}")
 include_directories(${CMAKE_SOURCE_DIR}/include/)
 set(SOURCE_FILES
         include/cget.h
+        include/constants.h
         include/inputparser.h src/inputparser.cpp
         include/commandfactory.h src/commandfactory.cpp
         include/command/command.h src/command/command.cpp
         include/command/install.h src/command/install.cpp
-        include/command/init.h src/command/init.cpp include/constants.h include/registry_api/registry.h src/registry_api/registry.cpp)
+        include/command/init.h src/command/init.cpp
+        include/registry_api/registry.h
+        include/registry_api/localregistry.h src/registry_api/localregistry.cpp)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 
