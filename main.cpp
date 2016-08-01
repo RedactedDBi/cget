@@ -45,6 +45,4 @@ int main(int argc, char* argv[]) {
         cout << USAGE;
         return 1;
     }
-
-    return 0;
 }
