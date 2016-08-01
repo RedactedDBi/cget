@@ -24,7 +24,8 @@ set(SOURCE_FILES
         include/inputparser.h src/inputparser.cpp
         include/commandfactory.h src/commandfactory.cpp
         include/command/command.h src/command/command.cpp
-        include/command/install.h src/command/install.cpp src/command/init.cpp include/command/init.h)
+        include/command/install.h src/command/install.cpp
+        include/command/init.h src/command/init.cpp)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 
