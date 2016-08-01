@@ -25,7 +25,7 @@ set(SOURCE_FILES
         include/commandfactory.h src/commandfactory.cpp
         include/command/command.h src/command/command.cpp
         include/command/install.h src/command/install.cpp
-        include/command/init.h src/command/init.cpp)
+        include/command/init.h src/command/init.cpp include/constants.h)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 
