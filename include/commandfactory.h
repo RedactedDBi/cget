@@ -3,10 +3,12 @@
 #include <string>
 
 namespace cget {
-    class Command;
+    namespace command {
+        class Command;
+    }
 
     class CommandFactory {
     public:
-        std::unique_ptr<Command> create(const std::string& name);
+        std::unique_ptr<command::Command> create(const std::string& name);
     };
 }

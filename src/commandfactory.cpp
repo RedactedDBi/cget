@@ -10,22 +10,22 @@ using std::string;
 using std::vector;
 
 namespace {
-    typedef cget::Command*(*RegFunc)(const std::string&);
+    typedef cget::command::Command*(*RegFunc)(const std::string&);
 
     template <typename T>
-    cget::Command* instantiate(const std::string& name) {
+    cget::command::Command* instantiate(const std::string& name) {
         return new T(name);
     }
 
     std::unordered_map<std::string, RegFunc> typeMap = {
-            { "install", &instantiate<cget::Install> },
-            { "init", &instantiate<cget::Init> },
+            { "install", &instantiate<cget::command::Install> },
+            { "init", &instantiate<cget::command::Init> },
     };
 }
 
-std::unique_ptr<cget::Command> cget::CommandFactory::create(const string& name) {
+std::unique_ptr<cget::command::Command> cget::CommandFactory::create(const string& name) {
     if (typeMap.find(name) == typeMap.end())
         throw std::invalid_argument("Could not find command");
 
-    return std::unique_ptr<Command>(typeMap[name](name));
+    return std::unique_ptr<command::Command>(typeMap[name](name));
 }

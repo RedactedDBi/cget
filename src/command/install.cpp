@@ -1,7 +1,7 @@
 #include <command/install.h>
 #include <iostream>
 
-int cget::Install::invoke(const std::vector<std::string> &args) {
+int cget::command::Install::invoke(const std::vector<std::string> &args) {
     std::cout << "ECHO: Passed command '" << name() << "'" << std::endl << std::endl;
 
     if (args.size() == 0) {
@@ -16,4 +16,4 @@ int cget::Install::invoke(const std::vector<std::string> &args) {
     return 0;
 }
 
-cget::Install::Install(const std::string &_name) : Command(_name) {}
+cget::command::Install::Install(const std::string &_name) : Command(_name) {}

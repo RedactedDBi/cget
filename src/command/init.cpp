@@ -95,10 +95,10 @@ namespace {
     }
 }
 
-cget::Init::Init(const std::string &_name)
+cget::command::Init::Init(const std::string &_name)
         : Command(_name) {}
 
-int cget::Init::invoke(const std::vector<std::string> &args) {
+int cget::command::Init::invoke(const std::vector<std::string> &args) {
     cout << "This utility will walk you through creating a " << JSON_FILE << " file." << endl;
     cout << "You'll be asked to setup the most common items" << endl;
     cout << endl;
