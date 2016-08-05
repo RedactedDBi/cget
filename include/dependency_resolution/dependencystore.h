@@ -19,7 +19,7 @@ namespace cget {
             DependencyStore* operator=(const DependencyStore&) = delete;
 
             using ProgressReport = std::function<void(const cget::dependency_resolution::DependencyProgress&)>;
-            bool resolveAll(
+            int resolveAll(
                     std::vector<std::string> passedDeps,
                     bool saveToPackageFile,
                     ProgressReport report);
