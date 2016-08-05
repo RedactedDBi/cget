@@ -28,7 +28,7 @@ set(SOURCE_FILES
         include/command/install.h src/command/install.cpp
         include/command/init.h src/command/init.cpp
         include/registry_api/registry.h
-        include/registry_api/localregistry.h src/registry_api/localregistry.cpp)
+        include/registry_api/localregistry.h src/registry_api/localregistry.cpp include/dependency_resolution/dependencyprogress.h include/dependency_resolution/resolve.h include/dependency_resolution/dependencystore.h include/dependency_resolution/packagefile.h src/dependency_resolution/dependencystore.cpp)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 
