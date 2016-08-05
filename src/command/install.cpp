@@ -1,16 +1,19 @@
 #include <command/install.h>
+#include <inputparser.h>
 #include <iostream>
 
 int cget::command::Install::invoke(const std::vector<std::string> &args) {
-    std::cout << "ECHO: Passed command '" << name() << "'" << std::endl << std::endl;
+    InputParser::ShortFlags f { { "s", "save" } };
+    InputParser p(f);
+    InputParser::Result r;
+    p.parseFlags(args, &r);
 
-    if (args.size() == 0) {
-        std::cout << "No other args were passed" << std::endl;
+    bool saveToPkgFile = r.binaryFlags.find("save") != r.binaryFlags.end();
+
+    if (saveToPkgFile) {
+        std::cout << "Should be saved" << std::endl;
     } else {
-        std::cout << "The following args were passed:" << std::endl;
-        for (int i = 0; i < args.size(); ++i) {
-            std::cout << "   " << args[i] << std::endl;
-        }
+        std::cout << "Should NOT be saved" << std::endl;
     }
 
     return 0;

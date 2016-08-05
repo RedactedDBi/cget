@@ -23,7 +23,7 @@ cget::InputParser::InputParser(const ShortFlags& shortFlags)
         : _shortFlags(shortFlags) {}
 
 void cget::InputParser::parseFlags(const Args& args, Result* result) const {
-    for (int i = 1; i < args.size(); ++i) {
+    for (int i = 0; i < args.size(); ++i) {
         std::smatch matches;
 
         if (std::regex_match(args[i], matches, FULL_FLAG_REGEX)) {

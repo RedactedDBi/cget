@@ -7,6 +7,7 @@ using std::vector;
 struct InputParserTest : testing::Test {
     using Result = cget::InputParser::Result;
 
+    const cget::InputParser::Args argsOneFlag = { "--save" };
     const cget::InputParser::Args argsFullFlag = { "install", "--save", "lib/dep" };
     const cget::InputParser::Args argsShortFlag = { "install", "-s", "lib/dep" };
     const cget::InputParser::ShortFlags shortFlags = {
@@ -28,7 +29,17 @@ TEST_F(InputParserTest, ParsesMainCommandCorrectly) {
 
 TEST_F(InputParserTest, ParsesBinaryFlagsCorrectly) {
     Result result;
-    sut.parseFlags(argsFullFlag, &result);
+    cget::InputParser::Args args;
+    sut.parseSubCommand(argsFullFlag, &args);
+    sut.parseFlags(args, &result);
+    ASSERT_EQ(result.binaryFlags.size(), 1);
+    ASSERT_TRUE(result.binaryFlags.find("save") != result.binaryFlags.end());
+    ASSERT_TRUE(result.args[0] == "lib/dep");
+}
+
+TEST_F(InputParserTest, CorrectOffsetWhenParsingFlags) {
+    Result result;
+    sut.parseFlags(argsOneFlag, &result);
     ASSERT_EQ(result.binaryFlags.size(), 1);
     ASSERT_TRUE(result.binaryFlags.find("save") != result.binaryFlags.end());
 }
@@ -52,7 +63,9 @@ TEST_F(InputParserTest, EmptyArgsThrowsException) {
 
 TEST_F(InputParserTest, ArgumentsParsedCorrectly) {
     Result result;
-    sut.parseFlags(argsFullFlag, &result);
+    cget::InputParser::Args output;
+    sut.parseSubCommand(argsFullFlag, &output);
+    sut.parseFlags(output, &result);
     ASSERT_EQ(result.args.size(), 1);
     ASSERT_EQ(result.args[0], "lib/dep");
 }
