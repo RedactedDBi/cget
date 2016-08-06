@@ -13,7 +13,7 @@ namespace cget {
             PackageFile* _pkg;
 
         public:
-            explicit DependencyStore(PackageFile *_pkg);
+            explicit DependencyStore(PackageFile *pkg);
             DependencyStore(const DependencyStore&) = delete;
             DependencyStore(DependencyStore&&) = delete;
             DependencyStore* operator=(const DependencyStore&) = delete;
