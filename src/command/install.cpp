@@ -12,9 +12,7 @@ int cget::command::Install::invoke(const std::vector<std::string> &args) {
 
     bool saveToPkgFile = r.binaryFlags.find("save") != r.binaryFlags.end();
 
-    return _store.resolveAll(r.args, saveToPkgFile, [this](const DependencyProgress& d){
-
-    });
+    return _store.resolveAll(r.args, saveToPkgFile);
 }
 
 cget::command::Install::Install(const std::string &_name)

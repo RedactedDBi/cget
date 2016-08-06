@@ -6,7 +6,6 @@ using std::vector;
 cget::dependency_resolution::DependencyStore::DependencyStore(PackageFile *pkg)
         : _pkg(pkg) {}
 
-int cget::dependency_resolution::DependencyStore::resolveAll(
-        vector<string> passedDeps, bool saveToPackageFile, ProgressReport report) {
+int cget::dependency_resolution::DependencyStore::resolveAll(vector<string> passedDeps, bool saveToPackageFile) {
     return 0;
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <functional>
 #include "dependencyprogress.h"
 
 namespace cget {
@@ -17,12 +16,7 @@ namespace cget {
             DependencyStore(const DependencyStore&) = delete;
             DependencyStore(DependencyStore&&) = delete;
             DependencyStore* operator=(const DependencyStore&) = delete;
-
-            using ProgressReport = std::function<void(const cget::dependency_resolution::DependencyProgress&)>;
-            int resolveAll(
-                    std::vector<std::string> passedDeps,
-                    bool saveToPackageFile,
-                    ProgressReport report);
+            int resolveAll(std::vector<std::string> passedDeps, bool saveToPackageFile);
         };
     }
 }
