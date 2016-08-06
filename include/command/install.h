@@ -6,7 +6,8 @@ namespace cget {
     namespace command {
         class Install : public Command {
         private:
-            dependency_resolution::PackageFile _pkg;
+            dependency_resolution::PackageFile     _pkg;
+            dependency_resolution::PackageFolder   _pkgFolder;
             dependency_resolution::DependencyStore _store;
 
         public:

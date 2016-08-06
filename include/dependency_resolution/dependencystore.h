@@ -1,18 +1,20 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "dependencyprogress.h"
+#include "resolve.h"
 
 namespace cget {
     namespace dependency_resolution {
         class PackageFile;
+        class PackageFolder;
 
         class DependencyStore {
         private:
-            PackageFile* _pkg;
+            PackageFile*   _pkg;
+            PackageFolder* _pkgFolder;
 
         public:
-            explicit DependencyStore(PackageFile *pkg);
+            DependencyStore(PackageFile *pkg, PackageFolder *pkgFolder);
             DependencyStore(const DependencyStore&) = delete;
             DependencyStore(DependencyStore&&) = delete;
             DependencyStore* operator=(const DependencyStore&) = delete;

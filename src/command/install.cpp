@@ -2,8 +2,6 @@
 #include <inputparser.h>
 #include <iostream>
 
-using cget::dependency_resolution::DependencyProgress;
-
 int cget::command::Install::invoke(const std::vector<std::string> &args) {
     InputParser::ShortFlags f { { "s", "save" } };
     InputParser p(f);
@@ -16,4 +14,4 @@ int cget::command::Install::invoke(const std::vector<std::string> &args) {
 }
 
 cget::command::Install::Install(const std::string &_name)
-        : Command(_name), _store(&_pkg) {}
+        : Command(_name), _store(&_pkg, &_pkgFolder) {}
