@@ -7,24 +7,22 @@ using std::vector;
 cget::dependency_resolution::DependencyStorage::DependencyStorage() {}
 
 int cget::dependency_resolution::DependencyStorage::resolveAll(vector<string> passedDeps, bool saveToPackageFile) {
-    std::list<DependencySocket*> sockets;
+    std::list<std::unique_ptr<Resolver>> resolvers;
 
     for (auto dep : passedDeps) {
-        auto sock = new DependencySocket(dep, &_pkgFolder);
-        sockets.push_back(sock);
+        auto resolver = _factory->create(dep);
+        resolvers.push_back(std::move(resolver));
     }
 
-    auto i = sockets.begin();
-    while (i != sockets.end())
+    auto i = resolvers.begin();
+    while (i != resolvers.end())
     {
         if ((*i)->done()) {
-            auto sock = *i;
-            sockets.erase(i++);
-            delete sock;
+            resolvers.erase(i++);
         }
         else
         {
-            (*i)->update();
+            (*i)->resolveChunk();
             ++i;
         }
     }

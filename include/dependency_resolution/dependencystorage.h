@@ -1,15 +1,20 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <memory>
+
 #include "packagefile.h"
 #include "packagefolder.h"
 
 namespace cget {
     namespace dependency_resolution {
+        class ResolverFactory;
+
         class DependencyStorage {
         private:
             PackageFile   _pkg;
             PackageFolder _pkgFolder;
+            std::unique_ptr<ResolverFactory> _factory;
 
         public:
             DependencyStorage();
