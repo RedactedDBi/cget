@@ -8,7 +8,7 @@ namespace cget {
         private:
             dependency_resolution::PackageFile     _pkg;
             dependency_resolution::PackageFolder   _pkgFolder;
-            dependency_resolution::DependencyStore _store;
+            dependency_resolution::DependencyStorage _store;
 
         public:
             Install(const std::string &_name);
