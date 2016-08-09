@@ -7,6 +7,10 @@
 #include "packagefolder.h"
 
 namespace cget {
+    namespace registry_api {
+        class Registry;
+    }
+
     namespace dependency_resolution {
         class ResolverFactory;
 
