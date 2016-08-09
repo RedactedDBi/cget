@@ -14,10 +14,10 @@ namespace cget {
         private:
             PackageFile   _pkg;
             PackageFolder _pkgFolder;
-            std::unique_ptr<ResolverFactory> _factory;
+            ResolverFactory* _factory;
 
         public:
-            DependencyStorage();
+            DependencyStorage(ResolverFactory* factory);
             DependencyStorage(const DependencyStorage&) = delete;
             DependencyStorage(DependencyStorage&&) = delete;
             DependencyStorage* operator=(const DependencyStorage&) = delete;

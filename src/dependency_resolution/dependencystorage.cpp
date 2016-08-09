@@ -4,7 +4,9 @@
 using std::string;
 using std::vector;
 
-cget::dependency_resolution::DependencyStorage::DependencyStorage() {}
+cget::dependency_resolution::DependencyStorage::DependencyStorage(
+        cget::dependency_resolution::ResolverFactory *factory)
+        : _factory(factory) {}
 
 int cget::dependency_resolution::DependencyStorage::resolveAll(vector<string> passedDeps, bool saveToPackageFile) {
     std::list<std::unique_ptr<Resolver>> resolvers;
@@ -29,3 +31,4 @@ int cget::dependency_resolution::DependencyStorage::resolveAll(vector<string> pa
 
     return 0;
 }
+

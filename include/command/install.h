@@ -8,6 +8,7 @@ namespace cget {
         private:
             dependency_resolution::PackageFile     _pkg;
             dependency_resolution::PackageFolder   _pkgFolder;
+            dependency_resolution::DefaultResolverFactory _factory;
             dependency_resolution::DependencyStorage _store;
 
         public:

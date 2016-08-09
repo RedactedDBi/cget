@@ -28,7 +28,7 @@ set(SOURCE_FILES
         include/command/install.h src/command/install.cpp
         include/command/init.h src/command/init.cpp
         include/registry_api/registry.h
-        include/registry_api/localregistry.h src/registry_api/localregistry.cpp include/dependency_resolution/resolve.h include/dependency_resolution/dependencystorage.h include/dependency_resolution/packagefile.h src/dependency_resolution/dependencystorage.cpp include/dependency_resolution/packagefolder.h include/dependency_resolution/resolver.h include/dependency_resolution/resolverfactory.h include/dependency_resolution/defaultresolverfactory.h)
+        include/registry_api/localregistry.h src/registry_api/localregistry.cpp include/dependency_resolution/resolve.h include/dependency_resolution/dependencystorage.h include/dependency_resolution/packagefile.h src/dependency_resolution/dependencystorage.cpp include/dependency_resolution/packagefolder.h include/dependency_resolution/resolver.h include/dependency_resolution/resolverfactory.h include/dependency_resolution/defaultresolverfactory.h src/dependency_resolution/defaultresolverfactory.cpp include/arch/bsdsocketresolver.h src/arch/bsdsocketresolver.cpp)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 
