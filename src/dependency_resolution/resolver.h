@@ -7,9 +7,10 @@ namespace cget {
         class Resolver {
         private:
             SocketFactory* _factory;
+            std::string _dep;
 
         public:
-            Resolver(SocketFactory *factory);
+            Resolver(const std::string& dependency, SocketFactory *factory);
 
             void resolveChunk();
             bool done();

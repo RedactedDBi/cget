@@ -12,8 +12,8 @@ int cget::dependency_resolution::DependencyStorage::resolveAll(vector<string> pa
     std::list<std::unique_ptr<Resolver>> resolvers;
 
     for (auto dep : passedDeps) {
-        auto resolver = _factory->create(dep);
-        resolvers.push_back(std::move(resolver));
+        resolvers.push_back(std::unique_ptr<Resolver>(
+                new Resolver(dep, _factory)));
     }
 
     auto i = resolvers.begin();

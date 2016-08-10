@@ -1,12 +1,14 @@
+#include <iostream>
 #include "resolver.h"
 
-void cget::dependency_resolution::Resolver::resolveChunk() {
+cget::dependency_resolution::Resolver::Resolver(
+        const std::string &dependency, cget::dependency_resolution::SocketFactory *factory)
+        : _factory(factory), _dep(dependency) {}
 
+void cget::dependency_resolution::Resolver::resolveChunk() {
+    std::cout << "Resolving chunk for " << _dep << std::endl;
 }
 
 bool cget::dependency_resolution::Resolver::done() {
     return false;
 }
-
-cget::dependency_resolution::Resolver::Resolver(cget::dependency_resolution::SocketFactory *factory)
-        : _factory(factory) {}
