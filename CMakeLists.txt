@@ -23,7 +23,7 @@ set(SOURCE_FILES
         src/cget.h
         src/constants.h
         src/inputparser.h src/inputparser.cpp
-        src/commandfactory.h src/commandfactory.cpp
+        src/command/commandfactory.h src/command/commandfactory.cpp
         src/command/command.h src/command/command.cpp
         src/command/install.h src/command/install.cpp
         src/command/init.h src/command/init.cpp

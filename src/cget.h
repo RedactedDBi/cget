@@ -2,5 +2,5 @@
 
 #include <VERSION.h>
 #include "inputparser.h"
-#include "commandfactory.h"
+#include "command/commandfactory.h"
 #include "command/command.h"

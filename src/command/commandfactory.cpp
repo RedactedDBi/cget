@@ -1,10 +1,10 @@
 #include "commandfactory.h"
-#include "command/command.h"
+#include "command.h"
 #include <unordered_map>
 
 // Sub commands
-#include "command/install.h"
-#include "command/init.h"
+#include "install.h"
+#include "init.h"
 #include <algorithm>
 
 using std::string;
@@ -36,7 +36,7 @@ namespace {
     };
 }
 
-std::unique_ptr<cget::command::Command> cget::CommandFactory::create(const string& name) {
+std::unique_ptr<cget::command::Command> cget::command::CommandFactory::create(const string& name) {
     if (typeMap.find(name) == typeMap.end())
         throw std::invalid_argument("Could not find command");
 
