@@ -1,12 +1,11 @@
 #include <dependency_resolution/dr.h>
-#include <registry_api/registry.h>
 #include <list>
 
 using std::string;
 using std::vector;
 
 cget::dependency_resolution::DependencyStorage::DependencyStorage(
-        cget::dependency_resolution::ResolverFactory* factory)
+        cget::dependency_resolution::SocketFactory* factory)
         : _factory(factory) {}
 
 int cget::dependency_resolution::DependencyStorage::resolveAll(vector<string> passedDeps, bool saveToPackageFile) {

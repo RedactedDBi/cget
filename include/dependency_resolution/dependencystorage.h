@@ -12,16 +12,16 @@ namespace cget {
     }
 
     namespace dependency_resolution {
-        class ResolverFactory;
+        class SocketFactory;
 
         class DependencyStorage {
         private:
             PackageFile   _pkg;
             PackageFolder _pkgFolder;
-            ResolverFactory* _factory;
+            SocketFactory* _factory;
 
         public:
-            DependencyStorage(ResolverFactory* factory);
+            DependencyStorage(SocketFactory* factory);
             DependencyStorage(const DependencyStorage&) = delete;
             DependencyStorage(DependencyStorage&&) = delete;
             DependencyStorage* operator=(const DependencyStorage&) = delete;

@@ -14,4 +14,4 @@ int cget::command::Install::invoke(const std::vector<std::string> &args) {
 }
 
 cget::command::Install::Install(const std::string &_name)
-        : Command(_name), _factory(&_registry), _store(&_factory) {}
+        : Command(_name), _store(&_factory) {}

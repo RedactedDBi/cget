@@ -1,11 +1,18 @@
 #pragma once
 
+#include "socketfactory.h"
+
 namespace cget {
     namespace dependency_resolution {
         class Resolver {
+        private:
+            SocketFactory* _factory;
+
         public:
-            virtual void resolveChunk() = 0;
-            virtual bool done() = 0;
+            Resolver(SocketFactory *factory);
+
+            void resolveChunk();
+            bool done();
         };
     }
 }
