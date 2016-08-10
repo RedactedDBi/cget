@@ -1,10 +1,10 @@
-#include <commandfactory.h>
-#include <command/command.h>
+#include "commandfactory.h"
+#include "command/command.h"
 #include <unordered_map>
 
 // Sub commands
-#include <command/install.h>
-#include <command/init.h>
+#include "command/install.h"
+#include "command/init.h"
 #include <algorithm>
 
 using std::string;

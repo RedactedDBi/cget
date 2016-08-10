@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <inputparser.h>
+#include "../src/inputparser.h"
 
 using std::string;
 using std::vector;

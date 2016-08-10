@@ -1,6 +1,6 @@
 #include <memory>
-#include <dependency_resolution/socketfactory.h>
-#include <dependency_resolution/dr.h>
+#include "socketfactory.h"
+#include "dr.h"
 
 using namespace cget::dependency_resolution;
 using std::string;

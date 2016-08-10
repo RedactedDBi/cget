@@ -1,7 +1,7 @@
 #pragma once
-#include <command/command.h>
-#include <dependency_resolution/dr.h>
-#include <registry_api/localregistry.h>
+#include "command.h"
+#include "../dependency_resolution/dr.h"
+#include "../registry_api/localregistry.h"
 
 namespace cget {
     namespace command {

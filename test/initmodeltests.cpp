@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include <command/init.h>
-#include <constants.h>
+#include "../src/command/init.h"
+#include "../src/constants.h"
 #include <fstream>
 #include <json.hpp>
 

@@ -1,4 +1,4 @@
-#include <command/command.h>
+#include "command.h"
 
 std::string cget::command::Command::name() const {
     return _name;

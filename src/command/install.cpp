@@ -1,5 +1,5 @@
-#include <command/install.h>
-#include <inputparser.h>
+#include "install.h"
+#include "../inputparser.h"
 #include <iostream>
 
 int cget::command::Install::invoke(const std::vector<std::string> &args) {

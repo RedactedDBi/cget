@@ -1,4 +1,4 @@
-#include <dependency_resolution/resolver.h>
+#include "resolver.h"
 
 void cget::dependency_resolution::Resolver::resolveChunk() {
 

@@ -18,17 +18,17 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 
 # Main library for cget
-include_directories(${CMAKE_SOURCE_DIR}/include/)
+include_directories(${CMAKE_SOURCE_DIR}/src/)
 set(SOURCE_FILES
-        include/cget.h
-        include/constants.h
-        include/inputparser.h src/inputparser.cpp
-        include/commandfactory.h src/commandfactory.cpp
-        include/command/command.h src/command/command.cpp
-        include/command/install.h src/command/install.cpp
-        include/command/init.h src/command/init.cpp
-        include/registry_api/registry.h
-        include/registry_api/localregistry.h src/registry_api/localregistry.cpp include/dependency_resolution/dr.h include/dependency_resolution/dependencystorage.h include/dependency_resolution/packagefile.h src/dependency_resolution/dependencystorage.cpp include/dependency_resolution/packagefolder.h include/dependency_resolution/resolver.h include/dependency_resolution/socketfactory.h include/dependency_resolution/defaultsocketfactory.h src/dependency_resolution/defaultsocketfactory.cpp src/dependency_resolution/resolver.cpp include/network/socket.h include/arch/unix/bsdsocket.h src/arch/unix/bsdsocket.cpp)
+        src/cget.h
+        src/constants.h
+        src/inputparser.h src/inputparser.cpp
+        src/commandfactory.h src/commandfactory.cpp
+        src/command/command.h src/command/command.cpp
+        src/command/install.h src/command/install.cpp
+        src/command/init.h src/command/init.cpp
+        src/registry_api/registry.h
+        src/registry_api/localregistry.h src/registry_api/localregistry.cpp src/dependency_resolution/dr.h src/dependency_resolution/dependencystorage.h src/dependency_resolution/packagefile.h src/dependency_resolution/dependencystorage.cpp src/dependency_resolution/packagefolder.h src/dependency_resolution/resolver.h src/dependency_resolution/socketfactory.h src/dependency_resolution/defaultsocketfactory.h src/dependency_resolution/defaultsocketfactory.cpp src/dependency_resolution/resolver.cpp src/network/socket.h src/arch/unix/bsdsocket.h src/arch/unix/bsdsocket.cpp)
 
 add_library(cget-core STATIC ${SOURCE_FILES})
 

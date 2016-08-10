@@ -1,5 +1,5 @@
 #pragma once
-#include <command/command.h>
+#include "command.h"
 #include <functional>
 
 namespace cget {

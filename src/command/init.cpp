@@ -1,9 +1,9 @@
-#include <command/init.h>
+#include "init.h"
 #include <iostream>
 #include <json.hpp>
 #include <regex>
 #include <fstream>
-#include <constants.h>
+#include "../constants.h"
 
 using std::cout;
 using std::cin;
